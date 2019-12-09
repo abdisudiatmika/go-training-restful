@@ -4,14 +4,15 @@ import (
 	"go-training-restful/config"
 	"go-training-restful/models"
 	"go-training-restful/routes"
+	"os"
 )
 
 func main() {
 	e := routes.New()
-
+	port := os.Getenv("PORT")
 	InitialMigration()
 
-	e.Logger.Fatal(e.Start(":8000"))
+	e.Logger.Fatal(e.Start(":" + port))
 }
 
 func InitialMigration() {
